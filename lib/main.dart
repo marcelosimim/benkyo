@@ -1,9 +1,7 @@
 import 'package:benkyo/route/route.dart' as route;
-import 'package:benkyo/screens/landingScreen.dart';
 import 'package:benkyo/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 
 Future<void> main() async {

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppTheme {
   static ThemeData get mainTheme {
     return ThemeData(
+      primaryColor: Color(0xFF1E1B2E),
       scaffoldBackgroundColor: Color(0xFF1E1B2E),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1017961893903",
+    "project_id": "benkyo-cbd91",
+    "storage_bucket": "benkyo-cbd91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017961893903:android:1660c95a35c5262eb2137a",
+        "android_client_info": {
+          "package_name": "br.com.ifmg.benkyo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017961893903-0dtc36kccu8ti5laqug0sodr9lsmumvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.ifmg.benkyo",
+            "certificate_hash": "70796bf3fee12358bc48bb8afd44d36cfed2c0a9"
+          }
+        },
+        {
+          "client_id": "1017961893903-nqpepdmebcdtauhtscc6vaqukd9nrra7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6O2RZck68VD-aZrlJQ4AzI4khjIjNbN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017961893903-nqpepdmebcdtauhtscc6vaqukd9nrra7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

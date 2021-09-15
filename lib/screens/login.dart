@@ -13,8 +13,11 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        alignment: Alignment.center,
-        child: Text('LOGIN'),
+        child: Column(
+          children: [
+            Text('Aproveite todos os benefícios da Benkyō agora mesmo!')
+          ],
+        ),
       ),
     );
   }

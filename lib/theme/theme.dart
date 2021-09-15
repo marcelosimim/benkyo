@@ -13,6 +13,7 @@ class AppTheme {
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(10.0),
             ),
+            minimumSize: Size(100, 50)
           )
       ),
       textTheme: TextTheme(

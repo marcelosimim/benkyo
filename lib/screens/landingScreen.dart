@@ -34,7 +34,7 @@ class _LandingScreenState extends State<LandingScreen> {
         Container(
           alignment: Alignment.bottomCenter,
           child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 50),
+              padding: EdgeInsets.only(bottom: 100),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

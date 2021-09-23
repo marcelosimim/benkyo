@@ -15,7 +15,9 @@ Future<void> main() async {
 
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+  bool isRunning = false;
+
   @override
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(

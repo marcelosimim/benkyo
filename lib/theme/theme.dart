@@ -25,6 +25,8 @@ class AppTheme {
               primary: Colors.white
           )
       ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Color(0xFF444053)),
+      bottomSheetTheme: BottomSheetThemeData(backgroundColor: Color(0xFF444053))
     );
   }
 }

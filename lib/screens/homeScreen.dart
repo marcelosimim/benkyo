@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isRunning = false;
   double progressIndicatorSize = 200;
   double time = 0.5;
+  int? interval;
 
   @override
   Widget build(BuildContext context) {

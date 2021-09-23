@@ -120,6 +120,7 @@ class _RegisterState extends State<Register> {
                       Map<String, dynamic> userData = {
                         "name": _nameController.text,
                         "email": _emailController.text,
+                        "interval": 5
                       };
                       model.signUp(
                           userData: userData,
@@ -146,9 +147,9 @@ class _RegisterState extends State<Register> {
 
   void _onSuccess(){
     print('sucess');
-    /*Future.delayed(Duration(seconds: 2)).then((_){
+    Future.delayed(Duration(seconds: 2)).then((_){
       Navigator.pushNamedAndRemoveUntil(context, route.homePage, (route) => false);
-    });*/
+    });
   }
 
   void _onFail(){

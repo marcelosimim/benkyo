@@ -115,9 +115,24 @@ class UserModel extends Model {
         userData = {
           'name': docUser['name'],
           'email': docUser['email'],
+          'interval': docUser['interval']
         };
       }
     }
     notifyListeners();
   }
+
+  void setInterval(int newData) {
+    print('setInterval');
+    print('userdata: ${userData['interval']}');
+    print('newData: ${newData}');
+    String currentUserID = _auth.currentUser!.uid.toString();
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentUserID)
+        .update({'interval' : newData});
+    userData['interval'] = newData;
+    notifyListeners();
+  }
+
 }

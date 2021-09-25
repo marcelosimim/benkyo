@@ -16,9 +16,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isRunning = false;
   bool intervalTime = false;
-  int defaultMinute = 2;
-  int currentTime = 2*60;
-  int minutes = 2;
+  int defaultMinute = 25;
+  int currentTime = 25*60;
+  int minutes = 25;
   int seconds = 60;
   Timer? timer;
   double percent = 0;

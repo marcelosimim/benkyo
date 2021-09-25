@@ -4,16 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class ModalSettings extends StatefulWidget {
-  const ModalSettings({Key? key, required this.isRunning}) : super(key: key);
-
-  final bool isRunning;
-
+  const ModalSettings({Key? key}) : super(key: key);
   @override
   _ModalSettingsState createState() => _ModalSettingsState();
 }
 
 class _ModalSettingsState extends State<ModalSettings> {
-  int? interval;
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +21,13 @@ class _ModalSettingsState extends State<ModalSettings> {
             Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: Container(
-                child: widget.isRunning ? null : Text('Intervalos de: '),
+                child: Text('Intervalos de: '),
               ),
             ),
             Container(
               width: 300,
               alignment: Alignment.center,
-              child: widget.isRunning
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.pause,),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.stop),
-                        ),
-                      ],
-                    )
-                  : CupertinoPicker(
+              child: CupertinoPicker(
                       itemExtent: 64,
                       onSelectedItemChanged: (int value) {
                         print(value);

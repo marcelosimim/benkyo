@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData get mainTheme {
     return ThemeData(
       primaryColor: Color(0xFF1E1B2E),
+      appBarTheme: AppBarTheme(backgroundColor: Color(0xFF1E1B2E)),
       scaffoldBackgroundColor: Color(0xFF1E1B2E),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             primary: Color(0xFFE1E1E6),
-            textStyle: GoogleFonts.poppins(color: Color(0xFF1C1C24)),
+            onPrimary: Color(0xFF1C1C24),
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(10.0),
             ),

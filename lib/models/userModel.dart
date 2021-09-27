@@ -33,7 +33,6 @@ class UserModel extends Model {
     isLoading = true;
     notifyListeners();
 
-    print('notify');
     _auth
         .createUserWithEmailAndPassword(
             email: userData["email"], password: pass)

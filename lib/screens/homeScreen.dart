@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //teste
   bool isRunning = false;
   bool intervalTime = false;
   int defaultMinute = 25;

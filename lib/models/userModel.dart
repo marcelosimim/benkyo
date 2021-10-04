@@ -92,9 +92,9 @@ class UserModel extends Model {
   }
 
   Future<Null> _saveUserData(Map<String, dynamic> userData) async {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
 
     this.userData = userData;
+
     await FirebaseFirestore.instance
         .collection("users")
         .doc(_auth.currentUser!.uid.toString())

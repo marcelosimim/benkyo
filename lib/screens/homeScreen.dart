@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:benkyo/functions/brightness.dart';
 import 'package:benkyo/models/userModel.dart';
 import 'package:benkyo/widgets/modalSettings.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //teste
+  final Brightness brightnessFunctions = new Brightness();
+  double brightness = 0.0;
   bool isRunning = false;
   bool intervalTime = false;
-  int defaultMinute = 25;
-  int currentTime = 25*60;
-  int minutes = 25;
+  int defaultMinute = 5;
+  int currentTime = 5*60;
+  int minutes = 5;
   int seconds = 60;
   Timer? timer;
   double percent = 0;
@@ -52,8 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ScopedModelDescendant<UserModel>(builder: (context, child, model) {
           return Container(
             width: double.infinity,
+            height: double.infinity,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 20),
@@ -65,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 80),
+                  padding: EdgeInsets.only(top: 40),
                   child: CircularPercentIndicator(
                     percent: percent,
                     animation: true,
@@ -81,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 120),
+                  padding: EdgeInsets.only(top: 80),
                   child: isRunning
                       ? Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -114,6 +117,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       seconds = 60;
                                       percent = 0;
                                       currentTime = defaultMinute*60;
+                                      brightnessFunctions.setBrightness(1);
+                                      brightness = 0;
                                       setState(() {});
                                     },
                                     icon: Icon(
@@ -127,6 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             isRunning = true;
                             _callTimer(model.userData['interval']);
+                            brightnessFunctions.setBrightness(brightness);
                             setState(() {});
                           },
                         ),
@@ -151,9 +157,11 @@ class _HomeScreenState extends State<HomeScreen> {
     print('start timer');
     double increment = 1/(defaultMinute*60);
       timer = Timer.periodic(Duration(seconds: 1), (timer) {
-        print('total time ${totalTime} : minutes ${minutes} : seconds ${seconds}');
+        print('total time ${totalTime} : minutes ${minutes} : seconds ${seconds} - brightness ${brightness}');
         setState(() {
-          if (totalTime - 1 > 0) { //se ainda estiver rodando o tempo
+          if (totalTime - 1 > 0) {//se ainda estiver rodando o tempo
+          brightness == 1 ? brightnessFunctions.setBrightness(1) : brightnessFunctions.setBrightness(brightness);
+          brightness += 1/(defaultMinute*60);
           totalTime--; // diminui o contator total
           seconds--; //diminui os segundos que aparecem para o usuário
           currentTime--;
@@ -185,6 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
           currentTime = interval*60;
           minutes = interval;
           seconds = 60;
+          brightnessFunctions.attention();
           _intervalTimer(totalIntervalTime, secPercent, interval);
         }
       });

@@ -32,113 +32,158 @@ class _RegisterState extends State<Register> {
           return Form(
             key: _formKey,
             child: Container(
-              child: Column(
+              child: Stack(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 30),
+                  Container(
+                    alignment: Alignment.topCenter,
                     child: Text(
                       'Aproveite todos os benefícios da Benkyō agora mesmo!',
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  Container(
-                    width: _textFormFieldWidth,
-                    height: _textFormFieldHeight,
-                    child: TextFormField(
-                      controller: _nameController,
-                      decoration: textFormFieldInputDecoration(
-                          Icon(Icons.account_circle), 'Nome'),
-                      validator: (value) {
-                        if (value == null || value == '') {
-                          return 'Campo obrigatório';
-                        }
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      width: _textFormFieldWidth,
-                      height: _textFormFieldHeight,
-                      child: TextFormField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: textFormFieldInputDecoration(
-                            Icon(Icons.mail), 'Email'),
-                        validator: (value) {
-                          if (value == null || value == '') {
-                            return 'Campo obrigatório';
-                          } else if (EmailValidator.validate(value)) {
-                            return null;
-                          }
-                          return 'Email inválido!';
-                        },
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: _textFormFieldWidth,
-                    height: _textFormFieldHeight,
-                    child: TextFormField(
-                      obscureText: _obscureText,
-                      controller: _passController,
-                      decoration: textFormFieldInputDecoration(
-                          Icon(Icons.lock), 'Senha'),
-                      validator: (value) {
-                        if (value == null || value == '') {
-                          return 'Campo obrigatório';
-                        } else if (value.length < 6) {
-                          return 'Insira pelo menos 6 caracteres';
-                        }
-                        return null;
-                      },
+                  Padding(padding: EdgeInsets.only(bottom: 100), child: Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: _textFormFieldWidth,
+                          height: _textFormFieldHeight,
+                          child: TextFormField(
+                            style: TextStyle(color: Colors.white, fontSize: 15),
+                            controller: _nameController,
+                            decoration: textFormFieldInputDecoration(
+                                Icon(Icons.account_circle, color: Colors.white70), 'Nome'),
+                            validator: (value) {
+                              if (value == null || value == '') {
+                                return 'Campo obrigatório';
+                              }
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Container(
+                            width: _textFormFieldWidth,
+                            height: _textFormFieldHeight,
+                            child: TextFormField(
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: textFormFieldInputDecoration(
+                                  Icon(Icons.mail, color: Colors.white70), 'Email'),
+                              validator: (value) {
+                                if (value == null || value == '') {
+                                  return 'Campo obrigatório';
+                                } else if (EmailValidator.validate(value)) {
+                                  return null;
+                                }
+                                return 'Email inválido!';
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(left: 50),
+                            child:
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: _textFormFieldWidth,
+                              height: _textFormFieldHeight,
+                              child: TextFormField(
+                                style: TextStyle(color: Colors.white, fontSize: 15),
+                                obscureText: _obscureText,
+                                controller: _passController,
+                                decoration: textFormFieldInputDecoration(
+                                    Icon(Icons.lock, color: Colors.white70), 'Senha'),
+                                validator: (value) {
+                                  if (value == null || value == '') {
+                                    return 'Campo obrigatório';
+                                  } else if (value.length < 6) {
+                                    return 'Insira pelo menos 6 caracteres';
+                                  }
+                                  return null;
+                                },
 
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 20),
+                              child: IconButton(
+                                icon: Icon(_showPassword),
+                                color: Colors.white70,
+                                onPressed: (){
+                                  if(_showPassword.toString() == 'IconData(U+0E6BD)'){
+                                    setState(() {
+                                      _showPassword = Icons.visibility_off;
+                                      _obscureText = false;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      _showPassword = Icons.visibility;
+                                      _obscureText = true;
+                                    });
+                                  }
+                                },
+                              ),
+                            )
+                          ],)
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: Container(
+                            width: _textFormFieldWidth,
+                            height: _textFormFieldHeight,
+                            child: TextFormField(
+                              style: TextStyle(color: Colors.white, fontSize: 15),
+                              obscureText: _obscureText,
+                              decoration: textFormFieldInputDecoration(
+                                  Icon(Icons.lock, color: Colors.white70), 'Confirme sua senha'),
+                              validator: (value) {
+                                if (value == null || value == '') {
+                                  return 'Campo obrigatório';
+                                } else if (value != _passController.text) {
+                                  return 'As senhas não coincidem';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                  ),),
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(padding: EdgeInsets.only(bottom: 100), child: ElevatedButton(onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Map<String, dynamic> userData = {
+                          "name": _nameController.text,
+                          "email": _emailController.text,
+                          "interval": 5
+                        };
+                        model.signUp(
+                            userData: userData,
+                            pass: _passController.text,
+                            onSuccess: _onSuccess,
+                            onFail: _onFail
+                        );
+                      } else {
+                        _onFail();
+                      }
+                    }, child: Text('ENVIAR')),),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      width: _textFormFieldWidth,
-                      height: _textFormFieldHeight,
-                      child: TextFormField(
-                        obscureText: _obscureText,
-                        decoration: textFormFieldInputDecoration(
-                            Icon(Icons.lock), 'Confirme sua senha'),
-                        validator: (value) {
-                          if (value == null || value == '') {
-                            return 'Campo obrigatório';
-                          } else if (value != _passController.text) {
-                            return 'As senhas não coincidem';
-                          }
-                          return null;
+                  Container(
+                    alignment: Alignment.bottomCenter,
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, route.loginPage);
                         },
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      Map<String, dynamic> userData = {
-                        "name": _nameController.text,
-                        "email": _emailController.text,
-                        "interval": 5
-                      };
-                      model.signUp(
-                          userData: userData,
-                          pass: _passController.text,
-                          onSuccess: _onSuccess,
-                          onFail: _onFail
-                      );
-                    } else {
-                      _onFail();
-                    }
-                  }, child: Text('ENVIAR')),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, route.loginPage);
-                      },
-                      child: Text(
-                          'Já tem uma conta cadastrada? Acesse ela agora mesmo'))
-                ],
+                        child: Text(
+                            'Já tem uma conta cadastrada? Acesse ela agora mesmo')),
+                  ),],
               ),
             ),
           );

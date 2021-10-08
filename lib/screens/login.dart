@@ -2,7 +2,6 @@ import 'package:benkyo/components/inputDecoration.dart';
 import 'package:benkyo/models/userModel.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:benkyo/route/route.dart' as route;
 import 'package:scoped_model/scoped_model.dart';
 

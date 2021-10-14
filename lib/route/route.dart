@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:benkyo/screens/homeScreen.dart';
-import 'package:benkyo/screens/landingScreen.dart';
-import 'package:benkyo/screens/login.dart';
-import 'package:benkyo/screens/register.dart';
+import 'package:benkyo/screens/firstScreen.dart';
+import 'package:benkyo/screens/loginScreen.dart';
+import 'package:benkyo/screens/registerScreen.dart';
 import 'package:benkyo/screens/splashScreen.dart';
 
 const String splashScreen = 'splashScreen';

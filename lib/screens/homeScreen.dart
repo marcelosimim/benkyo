@@ -19,9 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   double brightness = 0.0;
   bool isRunning = false;
   bool intervalTime = false;
-  int defaultMinute = 5;
-  int currentTime = 5*60;
-  int minutes = 5;
+  int defaultMinute = 25;
+  int currentTime = 25*60;
+  int minutes = 25;
   int seconds = 60;
   Timer? timer;
   double percent = 0;
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.exit_to_app))
           ],
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: !isRunning ?  FloatingActionButton(
             child: Icon(Icons.settings),
             onPressed: () {
               showModalBottomSheet(
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context) {
                     return ModalSettings();
                   });
-            }),
+            }) : null,
         body:
             ScopedModelDescendant<UserModel>(builder: (context, child, model) {
           return Container(

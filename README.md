@@ -1,6 +1,8 @@
 
 # Projeto Aplicações Móveis: Benkyō
 
+### Grupo: Lázaro Júnior, Lucas Laet, Marcelo Simim, Matheus Giovanny, Rafael Victor e Wagner Magalhães. 
+
 ###  Resumo
 A técnica pomodoro é um método de gerenciamento de tempo no qual se divide o período de trabalho em 25 minutos seguido de pequenos intervalos. A ideia é que pausas frequentes podem aumentar a agilidade mental.
 
